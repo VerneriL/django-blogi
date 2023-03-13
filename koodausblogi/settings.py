@@ -10,7 +10,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-#zfwd^l@tze4g00&k3w&g!%e^yp5sfd#gs#s4$u_luuc83celm'
 
 SECRET_KEY = os.environ.get('SECRET_KEY', default='secret')
 
@@ -69,12 +68,6 @@ WSGI_APPLICATION = 'koodausblogi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 sqlite_db = 'sqlite:///db.sqlite3'
 DATABASES = {
     'default': dj_database_url.config(default=sqlite_db, conn_max_age=600)
