@@ -75,7 +75,10 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+sqlite_db = 'sqlite:///db.sqlite3'
+DATABASES = {
+    'default': dj_database_url.config(default=sqlite_db, conn_max_age=600)
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
