@@ -1,4 +1,6 @@
 from pathlib import Path
+import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,10 +12,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-#zfwd^l@tze4g00&k3w&g!%e^yp5sfd#gs#s4$u_luuc83celm'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+SECRET_KEY = os.environ.get('SECRET_KEY', default='secret')
 
-ALLOWED_HOSTS = []
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = (os.environ.get('DEBUG', '').lower() not in {'0', 'no', 'false'})
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME') 
+
+ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME if RENDER_EXTERNAL_HOSTNAME else []]
 
 
 # Application definition
