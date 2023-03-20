@@ -9,5 +9,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', blogi_views.postaukset, name="postauslista"),
     path('postaus/<int:id>', blogi_views.nayta_postaus, name="nayta_postaus"),
-    path('postaus/uusi', blogi_views.uusi_postaus, name="uusi_postaus")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
